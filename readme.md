@@ -23,5 +23,31 @@ api:放php代码
 * php
 * mysql
 
+### 接口文档
+
+##### 查询所有数据
+
+* url:api/v1/select.php
+
+* method:get
+
+* query:null
+
+* data:
+
+  ```
+  data:{
+  	res_code:1,,//状态、响应码。1代表成功，0代表失败
+  	res_body:{
+  			data:{
+  				{id,name,price,num},
+  				{id,name,price,num}
+  			}
+  	     }
+        }
+  ```
+
+  
+
 
 

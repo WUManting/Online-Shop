@@ -40,18 +40,50 @@ editBtnClick(tr){
 delBtnClick(tr){
     //发送后台，数据库中删除
     if(confirm("确定删除？")){
-        tr.remove();
+       //请求后端做删除功能
+       let id=tr.getAttribute("data-id");
+       Tools.ajaxGetPromise("api/v1/delete.php",{id}).then(txt=>{
+           if(txt.res_code===1){
+               alert(txt.res_message);
+               //后台数据操作完成，前端重新请求查询接口
+               getShop.init();
+           }else{
+               alert(txt.res_message);
+           }
+       })
+
     }
 }
 /*确定*/
 okBtnClick(tr){
-    //把input的内容给对应的span
-    Array.from(tr.querySelectorAll("span")).forEach(span=>{
-        span.innerHTML=span.nextElementSibling.value;
-    })
-    //发送后台
-    //tr移除class:edit属性
-    tr.classList.remove("edit");
+    let inputPrice=tr.querySelector(".inputPrice"),
+        inputNum=tr.querySelector(".inputNum"),
+        id=tr.getAttribute("data-id"),
+        price=inputPrice.value,
+        num=inputNum.value;
+    /* 
+        //把input的内容给对应的span
+        Array.from(tr.querySelectorAll("span")).forEach(span=>{
+            span.innerHTML=span.nextElementSibling.value;
+        })
+    
+    */
+    
+    //给后台发送更新请求
+   Tools.ajaxGetPromise("api/v1/ok.php",{id,price,num}).then(txt=>{
+       if(txt.res_code===1){
+           alert(txt.res_message);
+           inputPrice.previousElementSibling.innerHTML=inputPrice.value;
+           inputNum.previousElementSibling.innerHTML=inputNum.value;
+           //tr移除class:edit属性
+           tr.classList.remove("edit");
+       }else{
+           alert(txt.res_message);
+            //tr移除class:edit属性
+            tr.classList.remove("edit");
+       }
+   })
+   
 }
 /*取消*/
 cancelBtnClick(tr){

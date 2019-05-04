@@ -219,13 +219,13 @@ var Tools={
 		/*请求产生过，就删除*/
 		document.body.removeChild(script);
 	},
-	/*jsonp请求
+	/*ajaxPostPromise:jsonp请求
 			 *@param	url			<string> 请求的地址
 			 *@param	query		<object> 请求携带的参数
 			 *@return	isJson		<boolean> 是否是json格式的数据
 	
 	*/
-	ajaxGetPromise :function(url,query,isJson){
+	ajaxGetPromise:function(url,query,isJson){
 		//isJson没有传递，则默认为true
 		isJson=isJson===undefined ? true : isJson;
 		if (query){
@@ -253,14 +253,7 @@ var Tools={
 			}
 		})	
 	}
-
-   /*ajaxPostPromise
-   
- 
- 
-   */
-   
-   
-   
-   
 }
+// define(()=>{
+// 	return Tools;
+// })

@@ -11,13 +11,18 @@ class SelectList{
 
         this.init();
     }
+    //渲染页面
     init(){
         let {pageIndex,count} =this;//解构赋值
         Tools.ajaxGetPromise("api/v1/select.php",{pageIndex,count}).then(txt =>{
-            console.log(txt);
              if(txt.res_code === 1){
                  this.render(txt.res_body.data);
-                 this.pageCount=res_body.pageCount;
+                 this.pageCount=txt.res_body.pageCount;
+                 //调用pageINation中的render()函数，根据总页数渲染分页，并确定当前是第几页
+                 /* this指当前select.js创建的对象，
+                    将this传递给  pagINation.js  创建的对象 pageination,
+                    在 pagINation.js的 render 中使用selectList参数接收 */
+                 pagination.render(this);
              }else{
                  //查询失败
                  alert(txt.res_message);
@@ -28,7 +33,7 @@ class SelectList{
         let html="";
         list.forEach((shop,index) =>{
             html+=`<tr data-id="${shop.id}">
-            <td>${index+1}</td>
+            <td>${(this.pageIndex-1)*this.count+index+1}</td>
             <td>${shop.name}</td>
             <td>
               <span>${shop.price}</span>

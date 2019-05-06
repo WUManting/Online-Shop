@@ -46,8 +46,8 @@ api:放php代码
   			}
   	     }
         }
-```
-  
+  ```
+
   ##### 添加商品的接口
 
 * url  :  api/v1/select.php
@@ -61,10 +61,10 @@ data:{
 	res_message:"添加成功"  or  "添加失败，请重试"，
 	res_body:{id,name,price,num}
       }
-
-
-
 ```
+
+
+
 
 #####  		商品删除接口的接口
 
@@ -76,10 +76,13 @@ data:{
 ```
 data:{
 	res_code:1,//状态、响应码。1代表成功，0代表失败
-	res_message:"删除成功"  or  "删除失败，请重试"
-			
-      }
+	res_message:"删除成功"  or  "删除失败，请重试"		
+
+  }
 ```
+
+
+
 
 	##### 	商品确定按钮的接口
 
@@ -91,50 +94,47 @@ data:{
 
 * data:
 
+    ```
         data:{
       	res_code:1,//状态、响应码。1代表成功，0代表失败
       	res_message:更新成功"  or  "更新失败，请重试"
       	}
+    ```
 
+    ##### 注册接口
 
+* url   :  api/v1/register.php
 
+* method  ：  get
 
+* query  :  {username,password}
 
+* data:
 
+    ```
+     data:{
+      	res_code:1,//状态、响应码。1代表成功，0代表失败
+      	res_message:"注册成功"  or  "注册失败，请重试"
+      	}
+    ```
 
+    
 
+    ##### 登录接口
 
+* url   :  api/v1/login.php
 
+* method  ：  get
 
+* query  :  {username,password}
 
+* data:
 
+    ```
+     data:{
+      	res_code:1,//状态、响应码。1代表成功，0代表失败
+      	res_message:"登录成功"  or  "登录失败，请重试"
+      	}
+    ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    

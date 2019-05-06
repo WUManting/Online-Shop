@@ -27,9 +27,13 @@
               <li><a href="#">详情</a></li>
             </ul>
            
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" id="unlogin-ul">
               <li><a href="html/login.html">登陆</a></li>
               <li><a href="html/regiter.html">注册</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right hidden" id="login-ul">
+              <li><a href="javascript:;">欢迎您，<span id="username-span"></span></a></li>
+              <li><a href="html/login.html">退出</a></li>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -56,20 +60,20 @@
   </table>
   <!-- 分页 -->
 <nav aria-label="Page navigation">
-  <ul class="pagination">
+  <ul class="pagination" id="page-container">
     <li>
-      <a href="javascript:;" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
+      <a class="prev-page" href="javascript:;" aria-label="Previous">
+        <span class="prev-page" aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    <li class="active" ><a href="javascript:;">1</a></li>
+    <!-- <li class="active" ><a href="javascript:;">1</a></li>
     <li><a href="javascript:;">2</a></li>
     <li><a href="javascript:;">3</a></li>
     <li><a href="javascript:;">4</a></li>
-    <li><a href="javascript:;">5</a></li>
-    <li>
-      <a href="javascript:;" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
+    <li><a href="javascript:;">5</a></li> -->
+    <li id="next-page">
+      <a class="next-page" href="javascript:;" aria-label="Next">
+        <span class="next-page" aria-hidden="true">&raquo;</span>
       </a>
     </li>
   </ul>
@@ -115,7 +119,10 @@
       </div>
     </div>
   </div>
-<!-- 选择 -->
+<script src="js/islogin.js"></script>
+<!-- 分页 -->
+<script src="js/pagINation.js"></script>
+<!-- 选择(需要使用到pagInation.js中的东西，故放在它后面) -->
 <script src="js/select.js"></script>
 <!-- 商品编辑 -->
 <script src="js/editTable.js"></script>

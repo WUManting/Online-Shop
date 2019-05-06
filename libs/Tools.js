@@ -170,17 +170,17 @@ var Tools={
 			 *@return	isJson		<boolean> 是否是json格式的数据
 	*/
 	ajax:function(method,url,query,callback,isJson){
+		isJson = isJson === undefined ? true : isJson;
 		if(method.toUpperCase() === "GET"){
 			this.ajaxGet(url,query,callback,isJson);
 		}else if(method.toUpperCase() ==="POST"){//用else if ，不用else是因为method可能会传错，传的不是get或post
 		//1.new 一个ajax核心对象
 			var ajax=new XMLHttpRequest();
-			ajax.open("post",url,true);
+			ajax.open("POST",url,true);
 			ajax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			//通过query拼接send
 			var str="";
 			if (query){
-				url +="?";
 				for(var key in query){
 					str+=key+"="+query[key]+"&";
 				}
@@ -190,10 +190,12 @@ var Tools={
 			
 			ajax.send(str);
 			ajax.onreadystatechange = function(){
-				if(ajax.readyState == 4 && ajax.status ==200){
-					callback && callback(isJson ? JSON.parse(ajax.responseText) : ajax.responseText);
-				}else {
-					alert("请求失败！");
+				if(ajax.readyState == 4 ){
+					if(ajax.status==200){
+						callback && callback(isJson ? JSON.parse(ajax.responseText) : ajax.responseText);
+					}else {
+						alert("请求失败！");
+					}
 				}
 			}
 		}

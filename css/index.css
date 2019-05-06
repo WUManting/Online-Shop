@@ -6,3 +6,4 @@
 .edit .btn-edit, .edit .btn-del{display:none;}
 .edit span{display: none;}
 .edit input {display:inline-block;}
+.hidden{display: none;}
